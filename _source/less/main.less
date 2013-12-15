@@ -1,0 +1,421 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+
+/* Theme for bootstrap Slate */
+@import "../libs/bootstrap/less/bootstrap";
+@import "theme/variables";
+@import "theme/bootswatch";
+
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+@brand-primary: #0198ef;
+
+@table-border-color: transparent;
+
+.container {
+    width: auto;
+    margin: 0;
+}
+
+h1, h2, h3, h4 {
+    color: #fff;
+}
+
+#app_view {
+    position: relative;
+    width: 1024px;
+    height: 553px;
+}
+
+#manual-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 99;
+    font-size: 24px;
+    line-height: 1em;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-animation: pulsate 2.5s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    padding: 15px 17px;
+}
+
+#manual {
+    width: 100%;
+    height: 553px;
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.3);  
+    padding: 0 80px 40px 80px; 
+    -webkit-transition: -webkit-transform .6s ease-in-out;
+    transition: transform .6s ease-in-out;
+    -webkit-transform: translate3d(0, -553px, 0);
+    transform: translate3d(0, -553px, 0);
+
+    .close-manual {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        z-index: 99;
+        font-size: 24px;
+        line-height: 1em;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        -webkit-animation: pulsate 2.5s ease-out;
+        -webkit-animation-iteration-count: infinite; 
+        padding: 15px 17px;
+        margin-top: -25px;
+    }
+
+    ul {
+        margin: 50px 0;
+
+        li {
+            font-size: 18px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.8);  
+            list-style: none;
+            border-radius: 6px;
+            padding: 5px 10px;
+        }
+
+        #manual-point-1 {
+            position: absolute;
+            top: 50%;
+            left: 85px;
+        }
+
+        #manual-point-2 {
+            position: absolute;
+            top: 20px;
+            left: 28%;
+        }
+
+        #manual-point-3 {
+            position: absolute;
+            top: 150px;
+            left: 28%;
+        }
+
+        #manual-point-4 {
+            position: absolute;
+            text-align: right;
+            bottom: 15px;
+            right: 85px;
+        }
+    }
+
+    &.active {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+
+#product_list {
+    position: relative;
+    overflow: hidden;
+    width: 1024px;
+    height: 553px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    .row {
+        margin-bottom: @grid-gutter-width;
+    }
+
+    #go_left, #go_right {
+        position: absolute;
+        top: 50%;
+        z-index: 99;
+        font-size: 24px;
+        line-height: 1em;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        -webkit-animation: pulsate 2.5s ease-out;
+        -webkit-animation-iteration-count: infinite; 
+        padding: 15px 17px;
+
+        &.inactive {
+            -webkit-animation: none;
+            opacity: .2;
+        }
+    }
+
+    #go_left {
+        left: 15px; 
+    }
+
+    #go_right {
+        right: 15px;
+    }
+
+    &-container {
+        width: 999999px;
+    }
+
+    .product_list-inner {
+        float: left;
+        width: 864px;
+        height: 553px;
+        margin: 20px 80px;
+    }
+
+    .product {
+        .make-xs-column(3);
+        cursor: pointer;
+
+        .product_inner {
+            overflow: hidden;
+            position: relative;
+            height: 231px;
+            background: lighten(@gray-darker, 3%);
+            padding: 0;
+
+            .product_slot {
+                float: left;
+                width: 40px;
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+                color: #fff;
+                background: @brand-primary;
+                padding: 5px;
+            }
+
+            .product_prize {
+                text-align: right;
+                font-size: 20px;
+                color: #96ff00;
+                background: darken(@brand-primary, 10%);
+                padding: 5px 10px;   
+                margin-left: 40px;
+            }
+
+            .product_image {
+                overflow: hidden;
+
+                img {
+                    max-width: 100%;
+                }
+            }
+
+            .product_name  {
+                font-size: 16px;
+                vertical-align: middle;
+                color: lighten(@brand-primary, 10%);
+                font-weight: normal;
+                text-align: center;
+                padding: 0 5px;
+            }
+        }
+    }
+
+    &-container {
+        -webkit-transition: -webkit-transform .4s ease-in-out;
+        transition: transform .4s ease-in-out;
+    }
+}
+
+.product_info {
+    position: absolute;
+    top: 0;
+    height: 553px;
+    padding: 0 80px 40px 80px;
+    background: darken(@gray-darker, 3%);
+    -webkit-transition: -webkit-transform .6s ease-in-out;
+    transition: transform .6s ease-in-out;
+    -webkit-transform: translate3d(0, -553px, 0);
+    transform: translate3d(0, -553px, 0);
+    z-index: 999;
+
+    .close-product_info {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        z-index: 99;
+        font-size: 24px;
+        line-height: 1em;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        -webkit-animation: pulsate 2.5s ease-out;
+        -webkit-animation-iteration-count: infinite; 
+        padding: 15px 17px;
+        margin-top: -25px;
+    }
+
+    &-header {
+        margin: 30px 0;
+    }
+
+    &-slot {
+            float: left;
+            width: 100px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            color: #fff;
+            background: @brand-primary;
+            padding: 5px 10px;
+        }
+
+    &-prize {
+            text-align: right;
+            font-size: 20px;
+            color: #96ff00;
+            background: darken(@brand-primary, 10%);  
+            padding: 5px 10px;
+            margin-left: 100px; 
+        }
+
+    &-image {
+        .make-xs-column(5);
+
+        img {
+            display: block;
+            max-width: 328px;
+            margin-bottom: 10px; 
+        }    
+    }
+
+    &-image-thumbs {
+
+        img {
+            float: left;
+            max-width: 76px;
+            margin-right: 8px;
+        }
+
+        img:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &-description {
+        .make-xs-column(3); 
+
+        h4:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &-data_sheet {
+        .make-xs-column(4); 
+
+        h4:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &.active {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+
+@-webkit-keyframes pulsate {
+    0% {background: rgba(255, 255, 255, 0.1);}
+    50% {-webkit-transform: scale(1.03, 1.05); background: rgba(255, 255, 255, 0.2);}
+    100% {background: rgba(255, 255, 255, 0.1);}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
